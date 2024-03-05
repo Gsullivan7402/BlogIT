@@ -33,7 +33,7 @@ This CMS-style blog is a platform where developers can publish articles, blog po
 
 1. Clone the repository:
 
-git clone https://your-repository-url.git
+git clone (https://github.com/Gsullivan7402/BlogIT)
 
 css
 
