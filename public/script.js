@@ -1,5 +1,3 @@
-// script.js in the public directory
-
 // Function to handle user signup
 async function signupFormHandler(event) {
     event.preventDefault();
