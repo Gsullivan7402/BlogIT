@@ -1,11 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+const { sequelize } = require('../config/config'); // Fixed import
 
 class Comment extends Model {}
 
 Comment.init(
   {
-    // Define model attributes
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -16,31 +15,28 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        // Comment must be at least one character long
         len: [1]
       }
     },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // Establishes a foreign key relationship to the User model
       references: {
-        model: 'user',
+        model: 'user', // Ensure this matches the table name
         key: 'id'
       }
     },
     post_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // Establishes a foreign key relationship to the Post model
       references: {
-        model: 'post',
+        model: 'post', // Ensure this matches the table name
         key: 'id'
       }
     }
   },
   {
-    sequelize,
+    sequelize, // This now correctly references the imported instance
     timestamps: true,
     freezeTableName: true,
     underscored: true,

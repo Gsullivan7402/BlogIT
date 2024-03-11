@@ -1,7 +1,4 @@
-// models/index.js
-
-const Sequelize = require('sequelize');
-const sequelize = require('../config/config');
+const { sequelize } = require('../config/config'); // Corrected import to destructure sequelize instance
 
 // Import models
 const User = require('./User');
@@ -9,11 +6,19 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 
 // Initialize models
-User.init(sequelize, Sequelize);
-Post.init(sequelize, Sequelize);
-Comment.init(sequelize, Sequelize);
+User.init({
+  // Define User model attributes here as in User.js
+}, { sequelize, modelName: 'User' }); // Add this for each model
 
-// Define model associations
+Post.init({
+  // Define Post model attributes here as in Post.js
+}, { sequelize, modelName: 'Post' });
+
+Comment.init({
+  // Define Comment model attributes here as in Comment.js
+}, { sequelize, modelName: 'Comment' });
+
+// Associations can remain unchanged
 // User-Post associations
 User.hasMany(Post, {
   foreignKey: 'user_id',
